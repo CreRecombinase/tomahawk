@@ -23,6 +23,7 @@ DEALINGS IN THE SOFTWARE.
 #ifndef TOMAHAWK_H_
 #define TOMAHAWK_H_
 
+#include "config.h"
 #include <iostream>
 #include <string>
 #include <regex>
@@ -35,9 +36,9 @@ extern std::string LITERAL_COMMAND_LINE;
 extern std::string INTERPRETED_COMMAND;
 
 /*------   Version   ------*/
-const int32_t TOMAHAWK_VERSION_MAJOR = 0;
-const int32_t TOMAHAWK_VERSION_MINOR = 7;
-const int32_t TOMAHAWK_VERSION_PATCH = 0;
+// const int32_t TOMAHAWK_VERSION_MAJOR = 0;
+// const int32_t TOMAHAWK_VERSION_MINOR = 7;
+// const int32_t TOMAHAWK_VERSION_PATCH = 1;
 const int32_t TOMAHAWK_VERSION_NUMBER  = (TOMAHAWK_VERSION_MAJOR *100*100 + TOMAHAWK_VERSION_MINOR *100 + TOMAHAWK_VERSION_PATCH);
 const std::string TOMAHAWK_LIB_VERSION = std::to_string(TOMAHAWK_VERSION_MAJOR) + '.' + std::to_string(TOMAHAWK_VERSION_MINOR) + '.' + std::to_string(TOMAHAWK_VERSION_PATCH);
 
