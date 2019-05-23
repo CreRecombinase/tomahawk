@@ -8,7 +8,7 @@ AC_INIT([tomahawk], [0.6.1], [BUG-REPORT-ADDRESS])
 : ${CXXFLAGS=-O3}
 AC_CONFIG_MACRO_DIRS([m4])
 AC_CONFIG_AUX_DIR([build-aux])
-
+AM_MAINTAINER_MODE
 
 AC_ENABLE_SHARED
 AC_DISABLE_STATIC
@@ -29,17 +29,15 @@ AC_LANG([C++])
 # Checks for programs.
 AC_PROG_CXX
 
-
-
 AX_CXX_COMPILE_STDCXX_11
 
-AX_CHECK_X86_FEATURES
+AX_EXT
 
-if test "$HAVE_SSE4_2_INSTRUCTIONS"; then
-   AC_MSG_RESULT(["X86 Features: $X86_FEATURE_CFLAGS"])
-else
-   AC_MSG_ERROR(["SSE4.2 feature not found! X86_Features: $X86_FEATURE_CFLAGS"])
-fi
+dnl if test "$HAVE_SSE4_2_INSTRUCTIONS"; then
+dnl    AC_MSG_RESULT(["X86 Features: $X86_FEATURE_CFLAGS"])
+dnl else
+dnl    AC_MSG_ERROR(["SSE4.2 feature not found! $HAVE_SSE_4_2_INSTRUCTIONS X86_Features: $X86_FEATURE_CFLAGS"])
+dnl fi
 
 
 
@@ -90,8 +88,8 @@ PKG_CHECK_MODULES([HTS], htslib, [
 
 
 
-
-CXXFLAGS="-I./src $CXXFLAGS"
+CFLAGS=" $CFLAGS -msse4.2"
+CXXFLAGS="-I./src $CXXFLAGS -msse4.2"
 
 # Checks for header files.
 AC_CHECK_HEADERS([inttypes.h stdint.h stdlib.h strings.h sys/time.h pthread.h])
@@ -114,7 +112,7 @@ dnl # Checks for library functions.
 AC_CHECK_FUNCS([gettimeofday memset pow strncasecmp])
 AC_SUBST(LIBS)
 AC_SUBST(CXXFLAGS)
-AC_SUBST(X86_FEATURE_CFLAGS)
+AC_SUBST(SIMD_FLAGS)
 AC_SUBST(CFLAGS)
 
 AC_DEFINE( [VERSION], [PACKAGE_VERSION], [Patch version])
