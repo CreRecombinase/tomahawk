@@ -143,9 +143,9 @@ am__dirstamp = $(am__leading_dot)dirstamp
 am_libtomahawk_la_OBJECTS = src/buffer.lo src/core.lo \
 	src/fisher_math.lo src/header.lo src/header_internal.lo \
 	src/importer.lo src/index.lo src/intervals.lo src/ld/ld.lo \
-	src/ld/ld_engine.lo src/ld/ld_structs.lo src/main.lo \
-	src/tomahawk.lo src/twk_reader.lo src/two_reader.lo \
-	src/two_sorter_structs.lo src/utility.lo src/zstd_codec.lo
+	src/ld/ld_engine.lo src/ld/ld_structs.lo src/tomahawk.lo \
+	src/twk_reader.lo src/two_reader.lo src/two_sorter_structs.lo \
+	src/utility.lo src/zstd_codec.lo
 libtomahawk_la_OBJECTS = $(am_libtomahawk_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -180,9 +180,8 @@ am__depfiles_remade = src/$(DEPDIR)/buffer.Plo src/$(DEPDIR)/core.Plo \
 	src/$(DEPDIR)/fisher_math.Plo src/$(DEPDIR)/header.Plo \
 	src/$(DEPDIR)/header_internal.Plo src/$(DEPDIR)/importer.Plo \
 	src/$(DEPDIR)/index.Plo src/$(DEPDIR)/intervals.Plo \
-	src/$(DEPDIR)/main.Plo src/$(DEPDIR)/tomahawk-main.Po \
-	src/$(DEPDIR)/tomahawk.Plo src/$(DEPDIR)/twk_reader.Plo \
-	src/$(DEPDIR)/two_reader.Plo \
+	src/$(DEPDIR)/tomahawk-main.Po src/$(DEPDIR)/tomahawk.Plo \
+	src/$(DEPDIR)/twk_reader.Plo src/$(DEPDIR)/two_reader.Plo \
 	src/$(DEPDIR)/two_sorter_structs.Plo src/$(DEPDIR)/utility.Plo \
 	src/$(DEPDIR)/zstd_codec.Plo src/ld/$(DEPDIR)/ld.Plo \
 	src/ld/$(DEPDIR)/ld_engine.Plo src/ld/$(DEPDIR)/ld_structs.Plo
@@ -292,7 +291,6 @@ CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
-CPUEXT_FLAGS = @CPUEXT_FLAGS@
 CRYPTO_CFLAGS = @CRYPTO_CFLAGS@
 CRYPTO_LIBS = @CRYPTO_LIBS@
 CXX = @CXX@
@@ -406,6 +404,7 @@ pdfdir = @pdfdir@
 prefix = @prefix@
 program_transform_name = @program_transform_name@
 psdir = @psdir@
+runstatedir = @runstatedir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 srcdir = @srcdir@
@@ -416,7 +415,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 ACLOCAL_AMFLAGS = -I m4
 lib_LTLIBRARIES = libtomahawk.la
-libtomahawk_la_SOURCES = src/buffer.cpp src/core.cpp src/fisher_math.cpp src/header.cpp src/header_internal.cpp src/importer.cpp src/index.cpp src/intervals.cpp src/ld/ld.cpp src/ld/ld_engine.cpp src/ld/ld_structs.cpp src/main.cpp src/tomahawk.cpp src/twk_reader.cpp src/two_reader.cpp src/two_sorter_structs.cpp src/utility.cpp src/zstd_codec.cpp src/aggregate.h src/aggregation.h src/calc.h src/concat.h src/decay.h src/fisher_math.h src/genotype_bitpacker.h src/genotype_encoder.h src/haplotype.h src/header_internal.h src/import.h src/ld/ld_balancing.h src/ld/ld_engine.h src/ld/ld_progress.h src/ld/ld_structs.h src/ld/ld_unpacker.h src/relationship.h src/scalc.h src/sort.h src/sort_progress.h src/stats.h src/third_party/boolarray.h src/third_party/ewah.h src/third_party/ewahutil.h src/third_party/runninglengthword.h src/timer.h src/two_sorter_structs.h src/vcf_reader.h src/view.h
+libtomahawk_la_SOURCES = src/buffer.cpp src/core.cpp src/fisher_math.cpp src/header.cpp src/header_internal.cpp src/importer.cpp src/index.cpp src/intervals.cpp src/ld/ld.cpp src/ld/ld_engine.cpp src/ld/ld_structs.cpp  src/tomahawk.cpp src/twk_reader.cpp src/two_reader.cpp src/two_sorter_structs.cpp src/utility.cpp src/zstd_codec.cpp src/aggregate.h src/aggregation.h src/calc.h src/concat.h src/decay.h src/fisher_math.h src/genotype_bitpacker.h src/genotype_encoder.h src/haplotype.h src/header_internal.h src/import.h src/ld/ld_balancing.h src/ld/ld_engine.h src/ld/ld_progress.h src/ld/ld_structs.h src/ld/ld_unpacker.h src/relationship.h src/scalc.h src/sort.h src/sort_progress.h src/stats.h src/third_party/boolarray.h src/third_party/ewah.h src/third_party/ewahutil.h src/third_party/runninglengthword.h src/timer.h src/two_sorter_structs.h src/vcf_reader.h src/view.h
 libtomahawk_la_LDFLAGS = -shared
 tomahawk_SOURCES = src/main.cpp
 tomahawk_CFLAGS = -pthread @SIMD_FLAGS@
@@ -584,7 +583,6 @@ src/ld/ld_engine.lo: src/ld/$(am__dirstamp) \
 	src/ld/$(DEPDIR)/$(am__dirstamp)
 src/ld/ld_structs.lo: src/ld/$(am__dirstamp) \
 	src/ld/$(DEPDIR)/$(am__dirstamp)
-src/main.lo: src/$(am__dirstamp) src/$(DEPDIR)/$(am__dirstamp)
 src/tomahawk.lo: src/$(am__dirstamp) src/$(DEPDIR)/$(am__dirstamp)
 src/twk_reader.lo: src/$(am__dirstamp) src/$(DEPDIR)/$(am__dirstamp)
 src/two_reader.lo: src/$(am__dirstamp) src/$(DEPDIR)/$(am__dirstamp)
@@ -620,7 +618,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/importer.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/index.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/intervals.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/main.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/tomahawk-main.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/tomahawk.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/twk_reader.Plo@am__quote@ # am--include-marker
@@ -970,7 +967,6 @@ distclean: distclean-am
 	-rm -f src/$(DEPDIR)/importer.Plo
 	-rm -f src/$(DEPDIR)/index.Plo
 	-rm -f src/$(DEPDIR)/intervals.Plo
-	-rm -f src/$(DEPDIR)/main.Plo
 	-rm -f src/$(DEPDIR)/tomahawk-main.Po
 	-rm -f src/$(DEPDIR)/tomahawk.Plo
 	-rm -f src/$(DEPDIR)/twk_reader.Plo
@@ -1036,7 +1032,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/$(DEPDIR)/importer.Plo
 	-rm -f src/$(DEPDIR)/index.Plo
 	-rm -f src/$(DEPDIR)/intervals.Plo
-	-rm -f src/$(DEPDIR)/main.Plo
 	-rm -f src/$(DEPDIR)/tomahawk-main.Po
 	-rm -f src/$(DEPDIR)/tomahawk.Plo
 	-rm -f src/$(DEPDIR)/twk_reader.Plo
